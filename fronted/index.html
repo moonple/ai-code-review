@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Code Review</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>AI 代码审查工具</h1>
+        <p class="subtitle">粘贴代码，Claude 帮你审查</p>
+
+        <div class="input-section">
+            <textarea id="codeInput" placeholder="在此粘贴你的代码..."></textarea>
+
+            <div class="dimensions">
+                <label><input type="checkbox" value="bug" checked> Bug</label>
+                <label><input type="checkbox" value="performance" checked> 性能</label>
+                <label><input type="checkbox" value="security" checked> 安全</label>
+                <label><input type="checkbox" value="readability" checked> 可读性</label>
+            </div>
+
+            <button id="reviewBtn" onclick="startReview()">开始审查</button>
+        </div>
+
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <p>正在审查中...</p>
+        </div>
+
+        <div id="error" class="hidden">
+            <p class="error-msg"></p>
+        </div>
+
+        <div id="result" class="hidden">
+            <div class="summary"></div>
+            <div class="issues"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

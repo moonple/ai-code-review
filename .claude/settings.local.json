@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem \"$env:APPDATA\\\\Code\\\\User\\\\settings.json\" -ErrorAction SilentlyContinue | Select-Object FullName)",
+      "PowerShell(java -version 2>&1; if \\($?\\) { Write-Host \"---\"; \\(Get-Command java\\).Source } else { Write-Host \"Java not found in PATH\" })",
+      "PowerShell(Write-Host \"JAVA_HOME: $env:JAVA_HOME\")",
+      "PowerShell($tomcat = \"C:\\\\软件\\\\tomcat\\\\apache-tomcat-9.0.118\"; Write-Host \"=== servlet-api ===\"; Get-ChildItem \"$tomcat\\\\lib\\\\servlet-api.jar\" -ErrorAction SilentlyContinue | Select-Object FullName, Length; Write-Host \"=== jspSmartUpload ===\"; Get-ChildItem \"$tomcat\\\\webapps\\\\upload\\\\WEB-INF\\\\lib\\\\jspSmartUpload.jar\" -ErrorAction SilentlyContinue | Select-Object FullName, Length; Write-Host \"=== 项目目录结构 ===\"; Get-ChildItem \"$tomcat\\\\webapps\\\\upload\" -Recurse -Depth 4 | Select-Object FullName)",
+      "PowerShell(Write-Host \"JAVA_HOME: $env:JAVA_HOME\"; Write-Host \"JRE_HOME: $env:JRE_HOME\"; Write-Host \"CATALINA_HOME: $env:CATALINA_HOME\")",
+      "PowerShell($env:JAVA_HOME = \"C:\\\\jdk21\"; $env:JRE_HOME = \"C:\\\\jdk21\"; & \"C:\\\\软件\\\\tomcat\\\\apache-tomcat-9.0.118\\\\bin\\\\startup.bat\")",
+      "PowerShell($env:JAVA_HOME = \"C:\\\\jdk21\"; $env:JRE_HOME = \"C:\\\\jdk21\"; $env:CATALINA_HOME = \"C:\\\\软件\\\\tomcat\\\\apache-tomcat-9.0.118\"; & \"C:\\\\软件\\\\tomcat\\\\apache-tomcat-9.0.118\\\\bin\\\\catalina.bat\" run)",
+      "PowerShell(python --version 2>&1)",
+      "PowerShell(python -m pip --version 2>&1)",
+      "PowerShell(Get-Command python -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-Command python3 -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-Command py -ErrorAction SilentlyContinue)",
+      "PowerShell(pip install openai)",
+      "WebFetch(domain:api.ohmygpt.com)",
+      "WebFetch(domain:www.ohmygpt.com)"
+    ]
+  }
+}
