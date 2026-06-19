@@ -72,6 +72,16 @@ ai-code-review/
 └── README.md
 ```
 
+## 项目截图
+
+### API 接口测试
+
+![FastAPI /docs 页面](picture/docs_picture.png)
+
+### 代码审查示例
+
+![前端审查结果](picture/demo_picture.png)
+
 ## License
 
 MIT
