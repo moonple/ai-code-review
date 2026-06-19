@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8000/review';
+const API_URL = '/review';
 
 function getSelectedDimensions() {
     return Array.from(document.querySelectorAll('.dimensions input:checked'))

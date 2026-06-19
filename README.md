@@ -17,7 +17,7 @@
 | 前端 | HTML + CSS + JavaScript（原生） |
 | 后端 | Python + FastAPI |
 | AI | Claude API (via OpenAI SDK) |
-| 部署 | Railway / Render |
+| 部署 | PythonAnywhere |
 
 ## 本地运行
 
@@ -71,6 +71,10 @@ ai-code-review/
 │   └── app.js           # 前端逻辑
 └── README.md
 ```
+
+## 在线 Demo
+
+👉 **[moonmaple.pythonanywhere.com](https://moonmaple.pythonanywhere.com)**
 
 ## 项目截图
 

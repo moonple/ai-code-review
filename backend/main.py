@@ -1,35 +1,36 @@
 import traceback
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+import os
+from flask import Flask, request, jsonify, send_from_directory
+from flask_cors import CORS
 from reviewer import review_code
 
-app = FastAPI(title="AI Code Review")
+app = Flask(__name__, static_folder=None)
+CORS(app)
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["POST"],
-    allow_headers=["*"],
-)
-
-class ReviewRequest(BaseModel):
-    code:str
-    dimensions:list[str] = ["bug","performance","security","readability"]
-
-class ReviewResponse(BaseModel):
-    summary:str
-    issues:list[dict]
-
-@app.post("/review",response_model=ReviewResponse)
-async def review(request:ReviewRequest):
+@app.route("/review", methods=["POST"])
+def review():
     try:
-        result = review_code(request.code, request.dimensions)
-        return result
+        data = request.get_json()
+        code = data.get("code", "")
+        dimensions = data.get("dimensions", ["bug", "performance", "security", "readability"])
+        result = review_code(code, dimensions)
+        return jsonify(result)
     except Exception as e:
         print("=== ERROR ===")
         traceback.print_exc()
-        return {
+        return jsonify({
             "summary": f"服务器错误: {str(e)}",
             "issues": [],
-        }
+        })
+
+
+# 托管前端
+frontend_dir = os.path.join(os.path.dirname(__file__), "..", "frontend")
+
+@app.route("/")
+def index():
+    return send_from_directory(frontend_dir, "index.html")
+
+@app.route("/<path:filename>")
+def static_files(filename):
+    return send_from_directory(frontend_dir, filename)
