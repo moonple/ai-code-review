@@ -1,4 +1,6 @@
-fastapi
-anthropic
+flask
+flask-cors
+openai
+httpx
 python-dotenv
-unicorn
+gunicorn

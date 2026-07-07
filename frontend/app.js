@@ -6,7 +6,7 @@ function getSelectedDimensions() {
 }
 
 async function startReview() {
-    const code = document.getElementById('codeInput').value.trim();
+    const code = document.getElementById('codeInput').value.trim(); //async 将这个函数标记为了异步函数，指返回值为promise对象的函数
     if (!code) {
         showError('请先粘贴代码');
         return;
@@ -22,7 +22,7 @@ async function startReview() {
     setState('loading');
 
     try {
-        const response = await fetch(API_URL, {
+        const response = await fetch(API_URL, { //fetch就是一个异步函数  await会等待promise完成之后返回最终的结果，且await只能用在异步函数中
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ code, dimensions }),
